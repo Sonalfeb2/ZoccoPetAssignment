@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import ReminderList from './features/reminders/ReminderList';
+import { Layout, Typography } from 'antd';
+import 'antd/dist/reset.css';
+
+const { Header, Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Layout >
+        <Header style={{color:'white'}}>
+          Daily Pet Reminders
+        </Header>
+        <Content >
+          <ReminderList />
+        </Content>
+      </Layout>
+    </Provider>
   );
 }
 
